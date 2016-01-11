@@ -1,0 +1,1 @@
+<?=CHtml::dropDownList('name','',$list,array('empty'=>'Выберите Регион'))?>
