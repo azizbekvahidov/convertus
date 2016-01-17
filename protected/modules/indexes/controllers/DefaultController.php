@@ -20,9 +20,6 @@ class DefaultController extends Controller
         $str = '';
         $function = new Functions();
         $tree = $function->getRegion($value);
-        echo "<pre>";
-        print_r($function->buildTree($tree,$value,$str));
-        echo "</pre>";
         $this->renderPartial('ajaxSearch',array(
             
         ));

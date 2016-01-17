@@ -7,7 +7,10 @@ class Functions
             ->from('region r')
             ->where('r.parentId = :id',array(':id'=>$id))
             ->queryAll();
-        return $model;
+        if(!empty($model))
+            return true;
+        else
+            return false;
     }
 
     public function prepareTree($id)
@@ -18,24 +21,28 @@ class Functions
             ->where('r.parentId = :id',array(':id'=>$id))
             ->queryAll();
         return $models;
-    /*
-        $arr = array();
-        echo "<pre>";
-        print_r($categories);
-        echo "</pre>";
-        foreach($categories as $category)
-        {
-            if (!$category['parentId'])
-                $category['parentId'] = 0;
-            if(empty($arr[$category['parentId']]))
-                $arr[$category['parentId']] = array();
-            $arr[$category['parentId']][] = $category;
-        }
-        return $arr;*/
     }
 
-    public function buildTree($arr,$parent_id,&$str = '')
+    public function ToStr($arr){
+        echo "<pre>";
+        print_r($arr);
+        echo "</pre>";
+        $str = '';
+        if(!is_array($arr['regId'])){
+            $str .= $this->ToStr($arr['regId']);
+        }
+        else{
+            $str[$arr['regionId']] .= $arr['regionName'];
+        }
+        return $str;
+    }
+
+    public function buildTree($arr,$str = '')
     {
+        $select = array();
+        foreach ($arr as $val) {
+        }
+        return $str;
     }
 
     public function getRegion($id)
@@ -47,16 +54,28 @@ class Functions
                     ->where('r.parentId = :id',array(':id'=>$id))
                     ->queryAll();
         foreach ($model as $val) {
-            $temp = $this->checkChild($val['regionId']);
-            if(!empty($temp)){
-                $arr[$val['regionId']] = $this->getRegion($val['regionId']);
+
+            $check = $this->checkChild($val['regionId']);
+            if($check == true){
+                $arr['regId'] = $val +  $this->getRegion($val['regionId']);
             }
             else{
-                $arr[$val['regionId']] = $val;
+                $arr['regId'] = $val;
             }
-
+            $str = $this->ToStr($arr);
         }
         return $arr;
 
+    }
+
+    public function getAddress($regId){
+        $model = Yii::app()->db->createCommand()
+                    ->select()
+                    ->from('address adr')
+                    ->join('region r','r.regionId = adr.regionId')
+                    ->queryAll();
+        echo "<pre>";
+        print_r($model);
+        echo "</pre>";
     }
 }
