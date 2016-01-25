@@ -47,35 +47,38 @@ class Functions
 
     public function getRegion($id)
     {
-        $arr = array();
+        $str = array();
         $model = Yii::app()->db->createCommand()
                     ->select()
                     ->from('region r')
                     ->where('r.parentId = :id',array(':id'=>$id))
                     ->queryAll();
         foreach ($model as $val) {
-
             $check = $this->checkChild($val['regionId']);
             if($check == true){
-                $arr['regId'] = $val +  $this->getRegion($val['regionId']);
+                foreach($this->getRegion($val['regionId']) as $key => $value){
+                    $str[$key] = $val['regionName']." ".$value;
+                }
             }
-            else{
-                $arr['regId'] = $val;
+            else {
+                $str[$val['regionId']] = $val['regionName'];
             }
-            $str = $this->ToStr($arr);
         }
-        return $arr;
+        return $str;
 
     }
 
-    public function getAddress($regId){
+    public function getAddress($id){
+        $list = array();
         $model = Yii::app()->db->createCommand()
-                    ->select()
-                    ->from('address adr')
-                    ->join('region r','r.regionId = adr.regionId')
-                    ->queryAll();
-        echo "<pre>";
-        print_r($model);
-        echo "</pre>";
+            ->select()
+            ->from('address adr')
+            ->where('adr.regionId = :id',array(':id'=>$id))
+            ->queryAll();
+        foreach ($model as $val) {
+            $list[$val['addressId']] = $val['streetName']." ".$val['laneName']." ".$val['house'];
+        }
+        return $list;
+
     }
 }
