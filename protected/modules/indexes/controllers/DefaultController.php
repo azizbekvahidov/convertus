@@ -17,8 +17,13 @@ class DefaultController extends Controller
 
     public function actionAjaxSearch(){
         $value = $_POST['val'];
+        $str = '';
         $function = new Functions();
         $tree = $function->getRegion($value);
+        /*foreach ($tree as $key => $val) {
+            $str .= "<option value='".$key."'>".$val."</option>";
+        }
+        echo $str;*/
         $this->renderPartial('ajaxSearch',array(
             'tree'=>$tree
         ));

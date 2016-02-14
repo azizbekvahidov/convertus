@@ -20,26 +20,33 @@ CREATE TABLE IF NOT EXISTS `address` (
   PRIMARY KEY (`addressId`),
   KEY `FK_address_region` (`regionId`),
   CONSTRAINT `FK_address_region` FOREIGN KEY (`regionId`) REFERENCES `region` (`regionId`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
--- Дамп данных таблицы convertus.address: ~0 rows (приблизительно)
+-- Дамп данных таблицы convertus.address: ~2 rows (приблизительно)
 DELETE FROM `address`;
 /*!40000 ALTER TABLE `address` DISABLE KEYS */;
+INSERT INTO `address` (`addressId`, `streetName`, `laneName`, `house`, `regionId`) VALUES
+	(1, 'Мира', '', '12-23', 9),
+	(2, 'Янги арик', '', 'Все', 9);
 /*!40000 ALTER TABLE `address` ENABLE KEYS */;
 
 
 -- Дамп структуры для таблица convertus.indexes
 CREATE TABLE IF NOT EXISTS `indexes` (
   `indexId` int(11) NOT NULL AUTO_INCREMENT,
-  `regionId` int(11) DEFAULT NULL,
+  `addressId` int(11) DEFAULT NULL,
+  `index` int(11) DEFAULT NULL,
   PRIMARY KEY (`indexId`),
-  KEY `FK_indexes_region` (`regionId`),
-  CONSTRAINT `FK_indexes_region` FOREIGN KEY (`regionId`) REFERENCES `region` (`regionId`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  KEY `FK_indexes_region` (`addressId`),
+  CONSTRAINT `FK_indexes_region` FOREIGN KEY (`addressId`) REFERENCES `address` (`addressId`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
--- Дамп данных таблицы convertus.indexes: ~0 rows (приблизительно)
+-- Дамп данных таблицы convertus.indexes: ~2 rows (приблизительно)
 DELETE FROM `indexes`;
 /*!40000 ALTER TABLE `indexes` DISABLE KEYS */;
+INSERT INTO `indexes` (`indexId`, `addressId`, `index`) VALUES
+	(1, 1, 102212),
+	(2, 2, 121100);
 /*!40000 ALTER TABLE `indexes` ENABLE KEYS */;
 
 
@@ -54,17 +61,24 @@ CREATE TABLE IF NOT EXISTS `region` (
   KEY `FK_region_regionType` (`regType`),
   CONSTRAINT `FK_region_region` FOREIGN KEY (`parentId`) REFERENCES `region` (`regionId`),
   CONSTRAINT `FK_region_regionType` FOREIGN KEY (`regType`) REFERENCES `regionType` (`regTypeId`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
 
--- Дамп данных таблицы convertus.region: ~5 rows (приблизительно)
+-- Дамп данных таблицы convertus.region: ~12 rows (приблизительно)
 DELETE FROM `region`;
 /*!40000 ALTER TABLE `region` DISABLE KEYS */;
 INSERT INTO `region` (`regionId`, `regionName`, `parentId`, `regType`) VALUES
 	(1, 'Навоий', 0, 1),
-	(6, 'Кармана', 0, 3),
-	(7, 'Навбахор', 0, 3),
+	(6, 'Кармана', 1, 3),
+	(7, 'Навбахор', 1, 3),
 	(8, 'Навоий', 1, 2),
-	(9, 'Янги арик', 8, 4);
+	(9, 'Янги арик', 8, 4),
+	(12, 'Тошкент', 0, 1),
+	(13, 'что то', 8, 4),
+	(14, 'другой', 8, 4),
+	(15, 'Юнусобод', 12, 3),
+	(16, 'Чилонзор', 12, 3),
+	(17, 'Октепа', 16, 4),
+	(18, '123', 13, 4);
 /*!40000 ALTER TABLE `region` ENABLE KEYS */;
 
 

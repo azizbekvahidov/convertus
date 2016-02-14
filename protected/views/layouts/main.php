@@ -17,6 +17,7 @@
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/chosen.css" />
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery.min.js"></script>
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/chosen.jquery.js"></script>
+    <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/temp.js"></script>
 
 	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
 </head>
