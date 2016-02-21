@@ -23,19 +23,7 @@ class Functions
         return $models;
     }
 
-    public function ToStr($arr){
-        echo "<pre>";
-        print_r($arr);
-        echo "</pre>";
-        $str = '';
-        if(!is_array($arr['regId'])){
-            $str .= $this->ToStr($arr['regId']);
-        }
-        else{
-            $str[$arr['regionId']] .= $arr['regionName'];
-        }
-        return $str;
-    }
+
 
     public function buildTree($arr,$str = '')
     {

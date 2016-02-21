@@ -10,7 +10,7 @@ class DefaultController extends Controller
     public function actionSearch(){
         $model = new Region();
         $list = $model->getRegionListById(0);
-        $this->render('search',array(
+        $this->renderPartial('search',array(
             'list'=>$list
         ));
     }
