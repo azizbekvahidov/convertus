@@ -33,30 +33,30 @@ INSERT INTO `address` (`addressId`, `streetName`, `laneName`, `house`, `regionId
 
 -- Дамп структуры для таблица convertus.addresses
 CREATE TABLE IF NOT EXISTS `addresses` (
-  `addressesId` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(150) DEFAULT NULL,
+  `addressesID` int(11) NOT NULL AUTO_INCREMENT,
+  `address` varchar(255) DEFAULT NULL,
+  `whom` varchar(255) DEFAULT NULL,
   `index` int(11) DEFAULT NULL,
-  `address` varchar(150) DEFAULT NULL,
-  `userId` int(11) DEFAULT NULL,
-  PRIMARY KEY (`addressesId`)
+  `IDUser` int(11) DEFAULT NULL,
+  PRIMARY KEY (`addressesID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 
 -- Дамп данных таблицы convertus.addresses: ~12 rows (приблизительно)
 DELETE FROM `addresses`;
 /*!40000 ALTER TABLE `addresses` DISABLE KEYS */;
-INSERT INTO `addresses` (`addressesId`, `name`, `index`, `address`, `userId`) VALUES
-	(1, 'some', 10200, 'asjkdgh ajksdf ashgfj ahg', 1),
-	(2, 'yhgyy', 11500, 'sdfjk fhadfkah kjfahfk ajkfha; f', 1),
-	(3, 'wer', 12600, 'asdkjas jasfh asdfh asdfha;', 2),
-	(4, 'nothing', 14500, 'ksdvoa p[[dfgjn  ', 1),
-	(5, 'month', 16000, 'ioweioodsh jkhsdjf a jsdbf a', 1),
+INSERT INTO `addresses` (`addressesID`, `address`, `whom`, `index`, `IDUser`) VALUES
+	(1, 'asjkdgh ajksdf ashgfj ahg', 'some', 10200, 1),
+	(2, 'sdfjk fhadfkah kjfahfk ajkfha; f', 'yhgyy', 11500, 1),
+	(3, 'asdkjas jasfh asdfh asdfha;', 'wer', 12600, 2),
+	(4, 'ksdvoa p[[dfgjn  ', 'nothing', 14500, 1),
+	(5, 'ioweioodsh jkhsdjf a jsdbf a', 'month', 16000, 1),
 	(6, NULL, NULL, NULL, 2),
-	(7, 'goof', 15766, 'kldfmnm,,ln\'a ;l;h\' \'dklsdj ldfskg ', 1),
-	(8, 'axaxa', 16590, 'om,sdfjhklk jdfjgljk jl;adfg;  ;adfjg', 1),
+	(7, 'kldfmnm,,ln\'a ;l;h\' \'dklsdj ldfskg ', 'goof', 15766, 1),
+	(8, 'om,sdfjhklk jdfjgljk jl;adfg;  ;adfjg', 'axaxa', 16590, 1),
 	(9, NULL, NULL, NULL, 3),
 	(10, NULL, NULL, NULL, 2),
 	(11, NULL, NULL, NULL, 4),
-	(12, 'good', 17800, 'nnvioi nojlk lk jlk lask djlak ', 1);
+	(12, 'nnvioi nojlk lk jlk lask djlak ', 'good', 17800, 1);
 /*!40000 ALTER TABLE `addresses` ENABLE KEYS */;
 
 

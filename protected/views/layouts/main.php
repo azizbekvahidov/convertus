@@ -15,9 +15,13 @@
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/main.css" />
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/form.css" />
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/chosen.css" />
+    <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/datatables.min.css" />
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery.min.js"></script>
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/chosen.jquery.js"></script>
+    <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/bootstrap.min.js"</script>
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/temp.js"></script>
+    <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/datatables.min.js"></script>
 
 	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
 </head>
