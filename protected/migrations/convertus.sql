@@ -39,9 +39,9 @@ CREATE TABLE IF NOT EXISTS `addresses` (
   `index` int(11) DEFAULT NULL,
   `IDUser` int(11) DEFAULT NULL,
   PRIMARY KEY (`addressesID`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
 
--- Дамп данных таблицы convertus.addresses: ~12 rows (приблизительно)
+-- Дамп данных таблицы convertus.addresses: ~21 rows (приблизительно)
 DELETE FROM `addresses`;
 /*!40000 ALTER TABLE `addresses` DISABLE KEYS */;
 INSERT INTO `addresses` (`addressesID`, `address`, `whom`, `index`, `IDUser`) VALUES
@@ -56,7 +56,16 @@ INSERT INTO `addresses` (`addressesID`, `address`, `whom`, `index`, `IDUser`) VA
 	(9, NULL, NULL, NULL, 3),
 	(10, NULL, NULL, NULL, 2),
 	(11, NULL, NULL, NULL, 4),
-	(12, 'nnvioi nojlk lk jlk lask djlak ', 'good', 17800, 1);
+	(12, 'nnvioi nojlk lk jlk lask djlak ', 'good', 17800, 1),
+	(13, '234234', NULL, 0, 1),
+	(14, '234234', NULL, 0, 1),
+	(15, '234234', 'asd adas dafs dfasfdas fasdf', 0, 1),
+	(16, '234234', 'asd adas dafs dfasfdas fasdf', 0, 1),
+	(17, '456465', 'jkhjksxhck adfjkhaio sdf asjdfioas ', 0, 1),
+	(18, 'sdfui ghoasdfgdhgjidashgio ehkrjtge uighadkjy nuadhr gjadrhguiadbk jgaer 234', 'jkhjksxhck adfjkhaio sdf asjdfioas ', 456465, 1),
+	(19, 'sdfui ghoasdfgdhgjidashgio ehkrjtge uighadkjy nuadhr gjadrhguiadbk jgaer 234', 'jkhjksxhck adfjkhaio sdf asjdfioas ', 456465, 1),
+	(20, 'sdflguws hgerj abn/asdj elgmasd gjknlasem srjgd;alg ;ad fk;gjadhger;gh jasdpghl ae', 'fkgujsdajisfgasu fk aoieiohjetyp h]aeor ajgna ', 342342, 1),
+	(21, 'sadf asdfkl asjkdfasdf iasdkf;a hlasdkfkl jasdf8 797', 'fsd fasf asfd asdfa sdfas', 453543, 1);
 /*!40000 ALTER TABLE `addresses` ENABLE KEYS */;
 
 
@@ -85,16 +94,19 @@ CREATE TABLE IF NOT EXISTS `reestr` (
   `reestrDate` datetime DEFAULT NULL,
   `userId` int(11) DEFAULT NULL,
   PRIMARY KEY (`reestrId`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
--- Дамп данных таблицы convertus.reestr: ~4 rows (приблизительно)
+-- Дамп данных таблицы convertus.reestr: ~7 rows (приблизительно)
 DELETE FROM `reestr`;
 /*!40000 ALTER TABLE `reestr` DISABLE KEYS */;
 INSERT INTO `reestr` (`reestrId`, `reestrDate`, `userId`) VALUES
 	(1, '2016-02-16 22:26:07', 1),
 	(2, '2016-02-16 22:26:10', 1),
 	(3, '2016-02-16 22:26:11', 1),
-	(4, '2016-02-16 22:26:13', 1);
+	(4, '2016-02-16 22:26:13', 1),
+	(5, '2016-02-23 21:19:40', 1),
+	(6, '2016-02-23 21:20:18', 1),
+	(7, '2016-02-23 21:21:11', 1);
 /*!40000 ALTER TABLE `reestr` ENABLE KEYS */;
 
 
@@ -108,9 +120,9 @@ CREATE TABLE IF NOT EXISTS `reestrAddr` (
   KEY `FK_reestrAddr_addresses` (`addressId`),
   CONSTRAINT `FK_reestrAddr_addresses` FOREIGN KEY (`addressId`) REFERENCES `addresses` (`addressesId`),
   CONSTRAINT `FK_reestrAddr_reestr` FOREIGN KEY (`reestrId`) REFERENCES `reestr` (`reestrId`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=65 DEFAULT CHARSET=utf8;
 
--- Дамп данных таблицы convertus.reestrAddr: ~6 rows (приблизительно)
+-- Дамп данных таблицы convertus.reestrAddr: ~21 rows (приблизительно)
 DELETE FROM `reestrAddr`;
 /*!40000 ALTER TABLE `reestrAddr` DISABLE KEYS */;
 INSERT INTO `reestrAddr` (`reestrAddrId`, `reestrId`, `addressId`) VALUES
@@ -119,7 +131,22 @@ INSERT INTO `reestrAddr` (`reestrAddrId`, `reestrId`, `addressId`) VALUES
 	(3, 1, 4),
 	(4, 1, 8),
 	(5, 2, 7),
-	(6, 2, 12);
+	(6, 2, 12),
+	(7, 1, 13),
+	(8, 1, 14),
+	(9, 1, 15),
+	(10, 1, 16),
+	(11, 1, 17),
+	(12, 1, 18),
+	(13, 1, 19),
+	(57, 1, 12),
+	(58, 1, 18),
+	(59, 1, 2),
+	(60, 1, 8),
+	(61, 1, 2),
+	(62, 1, 8),
+	(63, 1, 1),
+	(64, 1, 5);
 /*!40000 ALTER TABLE `reestrAddr` ENABLE KEYS */;
 
 
