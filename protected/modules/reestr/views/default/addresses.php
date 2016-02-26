@@ -10,7 +10,7 @@
         <tr>
             <td>
                 <label>
-                    <input type="checkbox" name="addresses"> <?=$val['whom']?> <a href="#" class="show">показать адрес</a>
+                    <input type="checkbox" name="addresses[]" value="<?=$val['addressesID']?>"> <?=$val['whom']?> <a href="#" class="show">показать адрес</a>
                 </label>
                     <div class="hide addr"><?=$val['index']?>, <?=$val['address']?></div>
             </td>

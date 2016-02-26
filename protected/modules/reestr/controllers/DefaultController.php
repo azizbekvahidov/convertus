@@ -27,12 +27,43 @@ class DefaultController extends Controller
         $models = Yii::app()->db->createCommand()
                     ->select()
                     ->from('reestrAddr r')
+                    ->join('addresses adr','adr.addressesID = r.addressId')
                     ->where('r.reestrId = :id',array(':id'=>$model['reestrId']))
                     ->queryAll();
         $this->render('create',array(
             'model'=>$model,
             'models'=>$models,
         ));
+    }
+
+    public function actionCreateAddr(){
+        $func = new Functions();
+        $id = $func->createAddress($_POST['index'],$_POST['name'],$_POST['address'],$_POST['id']);
+        $this->renderPartial('partial/createAddr',array(
+            'post'=>$_POST,
+            'id'=>$id
+        ));
+
+    }
+    public function actionAddAddr(){
+        $func = new Functions();
+        if(isset($_POST['addresses'])){
+            foreach ($_POST['addresses'] as $key => $val) {
+                $id = $func->createReestr($val,$_POST['id']);
+                $model[$key] = Yii::app()->db->createCommand()
+                    ->select()
+                    ->from('reestrAddr r')
+                    ->join('addresses adr','adr.addressesID = r.addressId')
+                    ->where('r.reestrAddrId = :id',array(':id'=>$id))
+                    ->queryRow();
+            }
+            
+        }
+
+        $this->renderPartial('partial/addAddr',array(
+            'model'=>$model
+        ));
+
     }
 
     public function actionList(){
